@@ -1,0 +1,102 @@
+<%- include("partials/header.ejs")%>
+<br>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-3 d-none d-xl-block d-lg-block d-md-block">
+			  <% if(!currentUser){%>
+            
+			  <% }else{%>
+			<a href="/users/<%=currentUser._id%>" id="gtshow">
+              <div class="p-2 mb-3" id="posts">
+                <div class="col-12 text-dark">
+                  <div class="profile-userpic">
+					<h5 class="m-1"><%= currentUser.username %></h5>
+                  </div>
+                </div>
+              </div>
+            </a>
+			 <% } %>
+            <a href="/" id="gtshow">
+              <div class="p-2 mb-3" id="posts">
+                <div class="col-12 text-dark" style="text-decoration: none;">
+                  &nbsp;<i class="fas fa-home"></i> Home
+                </div>
+              </div>
+            </a>
+            <a href="/newsfeed" id="gtshow">
+              <div class="p-2 mb-3" id="posts">
+                <div class="col-12 text-dark" style="text-decoration: none;">
+                  &nbsp;<i class="far fa-window-maximize"></i> Feed
+                </div>
+              </div>
+            </a>
+				<% if(!currentUser){%>
+            		<a href="/signup" id="gtshow">
+					  <div class="p-2 mb-3" id="posts">
+						<div class="col-12 text-dark" style="text-decoration: none;">
+						  &nbsp;<i class="fas fa-user-plus"></i> Sign Up
+						</div>
+					  </div>
+					</a>
+			  		<a href="/login" id="gtshow">
+					  <div class="p-2 mb-3" id="posts">
+						<div class="col-12 text-dark" style="text-decoration: none;">
+						  &nbsp;<i class="fas fa-sign-in-alt"></i> Login
+						</div>
+					  </div>
+					</a>
+				
+				<% }else{%>
+			  		<a href="/logout" id="gtshow">
+						<div class="p-2 mb-3" id="posts">
+						  <div class="col-12 text-dark" style="text-decoration: none;">
+							&nbsp;<i class="fas fa-sign-out-alt"></i> Logout
+						  </div>
+						</div>
+			  		</a>
+			  	<% } %>
+            <hr style="color:grey; margin-top: 20px; 
+            margin-bottom: 15px;
+            ">
+		  </div>
+          <div class="col-md-7 ">
+			  <% if(noMatch !== null){ %>
+				 <h3><%=noMatch%></h3> 
+			  <% } %>
+			<% questions.reverse().forEach(function(question){%>
+            <div class="mx-auto">
+              <div class="p-2 shadow-sm mb-3" id="posts">
+                <div class="row">
+                  <div class="col-md-12 px-4">
+                    <div id="author">
+						<a href="/users/<%=question.author.id%>">
+							<%= question.author.username %>
+						</a>
+                      <br>
+                    </div>
+                    <div id="created">
+                      <span><%= question.created.toDateString() %></span><br>
+                    </div>
+                    <a href="/newsfeed/<%=question.id%>" id="gtshow">
+                      <div class="title">
+                        <%= question.title%>
+                      </div>
+                    </a>
+                  </div>
+                  <hr class="my-3 mx-auto" style="width: 85%;">
+                </div>
+				<div class="col-12" id="reaction">
+					 <a href="/newsfeed/<%=question.id%>" class="btn btn-outline-secondary mb-2 btn-block">
+						 Go to full content
+					</a>
+				</div>
+              </div>
+            </div>
+			<% }); %>
+          </div>
+          <div class="col-2 d-none d-xl-block d-lg-block d-md-block">
+            
+          </div>
+        </div>
+      </div>
+<%- include("partials/footer.ejs")%>

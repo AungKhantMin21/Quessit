@@ -1,0 +1,70 @@
+<%- include("partials/header.ejs") %>
+<br>
+      <div class="container-fluid">
+          <div class="col-md-7 mx-auto">
+            <div class="p-4 shadow mb-2" id="posts">
+            <form action="/users/<%=user._id%>/profilesetup?_method=PUT" method="POST">
+                <h3 class="text-center font-weight-bold mb-4 text-dark">
+                    Edit Your Profile
+                </h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>First Name</h5>
+                        <input type="text" class="form-control mb-3" name="profile[firstname]">
+                        </div>
+                        <div class="col-6">
+                            <h5>Last Name</h5>
+                            <input type="text" class="form-control mb-3" name="profile[lastname]">
+                        </div>
+                    </div>
+                    <h5>Short Bio</h5>
+                    <textarea name="text" id="new_content" name="profile[description]" class="mb-2" rows="5">
+
+                    </textarea>
+                    <h5>Profile Image</h5>
+                    <div class="custom-file mb-3">
+                        <input type="file" name="profile[avatar]" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">
+                            <i class="fas fa-camera"></i> Choose photo</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="sel1"><h5>State / Region :</h5></label>
+                                <select class="form-control" id="sel1" name="profile[state]">
+                                    <option>Ayeyarwaddy</option>
+                                    <option>Bago</option>
+                                    <option>Chin</option>
+                                    <option>Kachin</option>
+                                    <option>Kayah</option>
+                                    <option>Kayin</option>
+                                    <option>Magway</option>
+                                    <option>Mandalay</option>
+                                    <option>Mon</option>
+                                    <option>Naypyidaw</option>
+                                    <option>Rakhine</option>
+                                    <option>Sagaing</option>
+                                    <option>Shan</option>
+                                    <option>Tanintharyi</option>
+                                    <option selected>Yangon</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="sel1"><h5>Country :</h5></label>
+                                <select class="form-control" id="sel1" name="profile[country]">
+                                    <option>Myanmar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Occupation</h5>
+                    <input type="text" class="form-control mb-3" name="profile[job]">
+        	</form>
+            </div>
+            <button class="btn btn-info btn-lg btn-block mb-5 shadow">Save</button>
+          </div>
+	</div>
+
+<%- include("partials/footer.ejs") %>

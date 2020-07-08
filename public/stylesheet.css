@@ -1,0 +1,134 @@
+body{
+    margin:0px;
+    background-color:#eff1ee;
+    font-family: "Open Sans","Raleway",sans-serif;
+}
+
+#gtshow{
+    text-decoration: none;
+}
+
+#posts{
+    background-color: white;
+    border:0.7px solid rgb(199, 199, 199);
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+    padding: 0px;
+    background: #fff;
+  }
+
+  .profile-userpic img {
+    float: none;
+    margin: 0;
+    vertical-align: middle;
+    border:1px solid #cfcfcf;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+  }
+
+#author a{
+    font-size: 14px;
+    color:rgb(105, 105, 105);
+	text-decoration:none;
+  } 
+
+
+  #author_side a{
+    font-size: 14px;
+    color:black;
+    padding-top: 6px;
+    text-decoration: none;
+  } 
+  
+#created{
+    margin-bottom: 6px;
+    font-size: 12px;
+    color:rgb(129, 129, 129);
+  }
+
+@media (max-width:1200px){
+    #author {
+      margin-left:13px;
+    }
+    #created {
+        margin-left:13px;
+    }
+    .title{
+        margin-left: 13px;
+    }
+    .content{
+        margin-left:13px;
+    }
+  }
+
+  @media only screen 
+  and (min-device-width : 414px) 
+  and (max-device-width : 736px) { 
+    #author {
+        margin-left:20px;
+      }
+      #created {
+          margin-left:20px;
+      }
+      .title{
+          margin-left: 20px;
+      }
+      .content{
+          margin-left:20px;
+      }
+  }
+  
+.title{
+    width:96%;
+    color:Black;
+    font-weight: bold;
+    font-size: 21px;
+    line-height:32px;
+}
+
+#reaction a{
+    text-decoration: none;
+    color:black;
+    margin-right: 15px;
+}
+
+.content{
+    margin-top: 10px;
+    width:96%;
+    color:Black;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+#addcmt{
+    text-decoration: none;
+}
+
+#new_title{
+    border:0px;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+    border-radius: 0%;
+}
+
+#new_content{
+    width:100%;
+}
+
+#landing{
+    animation: back_animate 5s infinite linear;
+}
+
+@keyframes back_animate{
+    0%{color: black}
+    25%{color:#17a2b8}
+    50%{color: #eff1ee;}
+	75%{color:#17a2b8}
+	100%{color:black}
+}

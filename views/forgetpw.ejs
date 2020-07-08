@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+
+<br>
+      <div class="container-fluid">
+        <div class="col-md-5 mx-auto">
+            <form action="/forget" method="POST">
+                <div class="p-4 shadow" id="posts">
+                    <h3 class=" font-weight-bold mb-4 text-dark">Forgot Password ?</h3>
+                    <h5>Enter your email address to reset password</h5>
+                    <input type="text" class="form-control mt-2 mb-3" name="email">
+                    <div class="row">
+                        <button type="submit" class ="btn btn-info ml-3 mb-1">
+                        Submit</button>
+                        <a href="/login" class="btn ml-3 mb-1 btn-secondary">Back</a>
+                    </div>
+                    
+                </div>
+            </form>
+          </div>
+      </div>
+
+<%- include("partials/footer.ejs") %>

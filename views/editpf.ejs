@@ -1,0 +1,74 @@
+<%- include("partials/header.ejs") %>
+<br>
+      <div class="container-fluid">
+          <div class="col-md-7 mx-auto">
+            <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+            <div class="p-4 shadow mb-2" id="posts">
+                <h3 class="text-center font-weight-bold mb-4 text-dark">
+                    Edit Your Profile
+                </h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>First Name</h5>
+                        <input type="text" class="form-control mb-3" name="profile[firstName]" 
+							   value="<%=user.firstName%>">
+                        </div>
+                        <div class="col-6">
+                            <h5>Last Name</h5>
+                            <input type="text" class="form-control mb-3" name="profile[lastName]"
+								   value="<%=user.lastName%>">
+                        </div>
+                    </div>
+                    <h5>Short Bio</h5>
+                    <textarea id="new_content" name="profile[description]" class="mb-2" rows="5">
+						<%= user.description%>
+                    </textarea>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="sel1"><h5>State/Region :</h5></label>
+                                <select class="form-control" id="sel1" name="profile[state]">
+                                    <option>Ayeyarwaddy</option>
+                                    <option>Bago</option>
+                                    <option>Chin</option>
+                                    <option>Kachin</option>
+                                    <option>Kayah</option>
+                                    <option>Kayin</option>
+                                    <option>Magway</option>
+                                    <option>Mandalay</option>
+                                    <option>Mon</option>
+                                    <option>Naypyidaw</option>
+                                    <option>Rakhine</option>
+                                    <option>Sagaing</option>
+                                    <option>Shan</option>
+                                    <option>Tanintharyi</option>
+                                    <option selected>Yangon</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="sel1"><h5>Country :</h5></label>
+                                <select class="form-control" id="sel1" name="profile[country]">
+                                    <option>Myanmar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Occupation</h5>
+                    <input type="text" class="form-control mb-3" name="profile[job]" value="<%=user.job%>">
+            </div>
+            <button class="btn btn-info btn-lg btn-block mb-5 shadow">Save</button>
+			</form>
+          </div>
+	</div>
+
+<script>
+      $('#customFile').on('change',function(){
+          //get the file name
+          var fileName = $(this).val();
+          //replace the "Choose a file" label
+          $(this).next('.custom-file-label').html(fileName);
+      })
+  </script>
+<%- include("partials/footer.ejs") %>

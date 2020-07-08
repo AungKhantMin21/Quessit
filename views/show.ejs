@@ -1,0 +1,138 @@
+<%- include("partials/header.ejs")%>
+	<br>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-8">
+                <div class="mx-auto">
+                    <div class="p-2 mb-3" id="posts">
+                        <div class="row">
+                            <div class="col-12 px-4">
+                                <% if(currentUser && questions.author.id.equals(currentUser._id)){%>
+                                <div class="btn-group float-right">
+                                    <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" 
+                                        href="/newsfeed/<%= questions._id %>/edit">Edit</a>
+                                        <form action="/newsfeed/<%= questions._id %>?_method=DELETE" 
+                                        method="POST">
+                                            <button class="dropdown-item">
+                                            Delete</button>
+                                        </form>
+                                        
+                                    </div>
+                                  </div>
+                                  <%} else{ %>
+				
+                                <% } %>
+                                <div id="author">
+                                    <a href="/users/<%= questions.author.id %>"><%= questions.author.username %></a><br>
+                                </div>
+                                <div id="created">
+                                    <span><%= questions.created.toDateString() %></span><br>
+                                </div>
+                                <div class="title">
+                                    <%= questions.title%>
+                                </div>
+                                <div class="content">
+									<img src="<%= questions.image%>" class="rounded mx-auto img-thumbnail d-block" 
+										 style="max-width:700px; max-height:700px;"><br>
+                                    <%= questions.content%>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="p-2 mb-5" id="posts" style="background-color:#e4e4e4;">
+                        <div class="col-md-12">
+							<h5 class="mb-3">
+								Comment Section
+							</h5>
+							<form action="/newsfeed/<%= questions._id%>" method="POST">
+								<textarea name="answer[text]" class="form-control mb-3" 
+										  placeholder="Add new comment"></textarea>
+								<div class="row">
+									<button type="submit" class="btn btn-sm ml-3 mr-3 btn-info">
+									Submit
+									</button>
+									<button type="reset" class="btn btn-sm btn-secondary">
+										Cancel
+									</button>
+								</div>
+								
+							</form>
+                        </div>
+                        <% questions.answers.forEach(function(answer){ %>
+                        <hr style="width:95%">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="btn-group float-right">
+                                        <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <% if(currentUser && answer.author.id.equals(currentUser._id)) {%>
+                                            <a class="dropdown-item" 
+                                            href="/newsfeed/<%= questions._id %>/answer/<%= answer._id %>/edit">Edit</a>
+                                            <form action="/newsfeed/<%= questions._id%>/answer/<%= answer._id%>?_method=DELETE" method="POST">
+                                                <button class="dropdown-item">
+                                                Delete</button>
+                                            </form>
+                            <% }  else if(currentUser && questions.author.id.equals(currentUser._id)) {%>
+			<form action="/newsfeed/<%= questions._id%>/answer/<%= answer._id%>?_method=DELETE" method="POST">
+                                                <button class="dropdown-item">
+                                                Delete</button>
+                                            </form>
+                                                <% }else{ %>
+												
+											<% } %>
+                                        </div>
+                                      </div>
+                                      <div id="author">
+                                        <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a><br>
+                                    </div>
+                                    <div id="created">
+                                        <span><%= answer.created.toDateString() %></span><br>
+                                    </div>
+                                    <div class="content">
+                                        <%= answer.text %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+              </div>
+              <div class="col-4 d-none d-xl-block d-lg-block d-md-block">
+                <div class="p-0 shadow-lg" id="posts">
+                    <div class="p-2">
+                    <p class="font-weight-bold text-center"><%= questions.author.username %></p>
+                    <div class="content">
+                        <%= questions.author.description %>
+                    </div>
+                    <br>
+                    <p class="font-weight-bold text-dark">
+                        <i class="fas fa-briefcase"></i> - <%= questions.author.job %> <br><br>
+                    </p>
+                    </div>
+                    
+                    <div class="mb-0 bg-info">&nbsp;</div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+
+      <script>
+        $('#customFile').on('change',function(){
+            //get the file name
+            var fileName = $(this).val();
+            //replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
+
+<%- include("partials/footer.ejs")%>

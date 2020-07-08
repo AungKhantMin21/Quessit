@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs")%>
+
+<br>
+      <div class="container-fluid">
+        <div class="col-md-5 mx-auto">
+            <form action="/reset/<%= token %>" method="POST">
+                <div class="p-4 shadow" id="posts">
+                    <h3 class=" font-weight-bold mb-4 text-dark">Reset Password</h3>
+                    <h5>New Password</h5>
+                    <input type="text" class="form-control mt-2 mb-3" name="password">
+                    <h5>Retype New Password</h5>
+                    <input type="text" class="form-control mt-2 mb-3" name="confirm">
+                    <button type="submit" class ="btn btn-info btn-block mb-1">
+                    Save Change</button>
+                </div>
+            </form>
+          </div>
+      </div>
+
+<%-include("partials/footer.ejs") %>

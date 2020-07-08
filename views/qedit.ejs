@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs")%>
+<br>
+      <div class="container-fluid">
+        <div class="col-md-7 mx-auto">
+            <h2 style="font-weight: bold;">Edit Post</h2>
+            <form enctype="multipart/form-data" action="/newsfeed/<%= questions._id%>?_method=PUT" method="POST">
+            <div class="p-4" id="posts">
+              <input id="new_title" type="text" name="title" value="<%= questions.title%>" class="form-control"><br>
+              <div class="custom-file mb-3">
+                    <input type="file" name="image" class="custom-file-input" accept="image/*" id="customFile">
+                    <label class="custom-file-label" for="customFile">
+                        <i class="fas fa-images"></i> Add image</label>
+                  </div>
+              <br>
+              <textarea name="content" id="new_content" class="mb-2" rows="10" >
+				<%= questions.content%></textarea>
+            </div>
+            <button class="btn btn-info mt-2 mb-4 mr-2">Update</button>
+            <a href="/newfeed/<%= questions._id%>" class="btn mb-4 btn-outline-secondary mt-2">Back</a>
+          </form>
+        </div>
+    </div>
+
+
+    <script>
+      $('#customFile').on('change',function(){
+          //get the file name
+          var fileName = $(this).val();
+          //replace the "Choose a file" label
+          $(this).next('.custom-file-label').html(fileName);
+      })
+  </script>
+
+<%- include("partials/footer.ejs")%>

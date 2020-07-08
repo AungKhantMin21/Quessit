@@ -1,0 +1,58 @@
+<%- include("partials/header.ejs") %>
+
+<br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="p-3 mb-3 shadow" id="posts">
+              <h4 class="font-weight-bold"><%= user.username %></h4>
+              <p style="font-weight: 500; text-align: center;"><%= user.description %></p>
+              <hr>
+              <h5>User Info</h5>
+              <div class="container mt-2 mb-3">
+                <div class="mb-2"><b>First Name</b> &nbsp; <%= user.firstName %></div>
+                <div class="mb-2"><b>Last Name</b> &nbsp; <%= user.lastName %> </div>
+                <div class="mb-2"><b>Address</b> &nbsp; <%= user.state%>, <%=user.country%> </div>
+                <div class="mb-2"><b>Occupation</b> &nbsp; <%= user.job%> </div>
+                <div class="mb-2"><b>Email</b> &nbsp; <%=user.email%> </div>
+              </div>
+              <% if(currentUser && user._id.equals(currentUser._id)) {%>
+              <a href="/users/<%=user._id%>/edit" class="btn btn-secondary btn btn-block">Edit Profile</a>
+              <% } else { %>
+
+                <% } %>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <% questions.forEach(function(question){ %>
+            <div class="p-2  shadow-sm mb-3" id="posts">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="author">
+					  <a href="/users/<%=question.author.id%>">
+							<%= question.author.username %>
+						</a><br>
+                  </div>
+                  <div id="created">
+                    <span><%= question.created.toDateString() %></span><br>
+                  </div>
+                  <a href="showpost.html" id="gtshow">
+                    <div class="title">
+                      <%= question.title %>
+                    </div>
+                  </a>
+                </div>
+                <hr class="my-3 mx-auto" style="width: 85%;">
+              </div>
+				<div class="col-11" id="reaction">
+					<a href="/newsfeed/<%=question.id%>" class="btn btn-outline-secondary mb-2 btn-block">
+						 Go to full content
+					</a>
+				</div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+
+<%- include("partials/footer.ejs") %>

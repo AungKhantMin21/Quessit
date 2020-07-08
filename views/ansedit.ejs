@@ -1,0 +1,16 @@
+<%- include("partials/header.ejs") %>
+
+<br>
+      <div class="container-fluid">
+        <div class="col-md-5 mx-auto">
+            <form action="/newsfeed/<%= questions_id %>/answer/<%= answers._id %>?_method=PUT" method="POST">
+                <textarea name="answer[text]" id="new_content" class="mb-2 bg-white" rows="10" >
+				<%= answers.text%>
+				</textarea>
+                <button class="btn btn-info mt-2 mb-4 mr-2">Update</button>
+                <a href="/newsfeed/<%= questions_id %>" class="btn mb-4 btn-outline-secondary mt-2">Back</a>
+            </form>
+            
+        </div>
+      </div>
+<%- include("partials/footer.ejs") %>
