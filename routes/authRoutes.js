@@ -12,6 +12,7 @@ const sgMail = require("@sendgrid/mail");
 
 //sendgrid api key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+console.log(process.env.SENDGRID_API_KEY);
 var multer = require('multer');
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
